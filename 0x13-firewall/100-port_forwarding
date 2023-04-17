@@ -26,15 +26,6 @@
 
 # End required lines
 
-## Section added
-
-\*nat
-:PREROUTING ACCEPT [0:0]
--A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 500
-COMMIT
-
-# End of added section
-
 # allow all on loopback
 
 -A ufw-before-input -i lo -j ACCEPT
@@ -108,4 +99,9 @@ COMMIT
 
 # don't delete the 'COMMIT' line or these rules won't be processed
 
+COMMIT
+
+\*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 500
 COMMIT
